@@ -1,0 +1,33 @@
+[
+    {
+        "projectId": 1,
+        "name": "Webshop for Digital Books",
+        "description": "E-commerce solution for a webshop that sells digital books. Allows users to preview and buy books that they choose, and much more.",
+        "url": "https://github.com/dulait/e-books",
+        "image": "assets/e-books.png",
+        "technologies": [
+            "Angular",
+            "Laravel"
+        ]
+    },
+    {
+        "projectId": 2,
+        "name": "Lifeguard Management Software System",
+        "description": "Represents a software solution for pool coordinators enabling the management of lifeguards, shifts, schedules and work reports.",
+        "url": "https://github.com/dulait/spasilacka-sluzba",
+        "image": "assets/lifeguards.png",
+        "technologies": [
+            "Java"
+        ]
+    },
+    {
+        "projectId": 3,
+        "name": "ISO Validation Library",
+        "description": "Library that can be used to validate numerous standardized numbers such as ISBN, IBAN, credit card numbers and more.",
+        "url": "https://github.com/dulait/check-mate",
+        "image": "assets/checkmate.png",
+        "technologies": [
+            "Java"
+        ]
+    }
+]

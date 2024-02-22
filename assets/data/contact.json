@@ -1,0 +1,22 @@
+[
+    {
+        "contactId": 1,
+        "type": "email",
+        "value": "mailto:draskovicdusan4@gmail.com"
+    },
+    {
+        "contactId": 2,
+        "type": "github",
+        "value": "https://github.com/dulait"
+    },
+    {
+        "contactId": 3,
+        "type": "linkedin",
+        "value": "https://www.linkedin.com/in/dusan-draskovic"
+    },
+    {
+        "contactId": 4,
+        "type": "hackerrank",
+        "value": "https://www.hackerrank.com/profile/dulait"
+    }
+]
