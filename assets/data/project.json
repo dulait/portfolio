@@ -29,5 +29,15 @@
         "technologies": [
             "Java"
         ]
+    },
+    {
+        "projectId": 4,
+        "name": "Helloworld Crawler",
+        "description": "Python Web crawler that can fetch interview data from popular IT job-hunting website helloworld.rs",
+        "url": "https://github.com/dulait/helloworld-crawler",
+        "image": "assets/helloworld-crawler.png",
+        "technologies": [
+            "Python"
+        ]
     }
 ]
