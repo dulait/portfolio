@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { Footer, Header } from './core/components';
-import { About, Contact, Experience, Projects } from './feature';
+import { FooterComponent, HeaderComponent } from './core/components';
+import { AboutComponent, ContactComponent, HomeComponent, ProjectsComponent, SkillsComponent } from './feature';
 
 @Component({
   selector: 'app-root',
-  imports: [Experience, About, Projects, Contact, Header, Footer],
+  imports: [HeaderComponent, FooterComponent, HomeComponent, AboutComponent, SkillsComponent, ProjectsComponent, ContactComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
