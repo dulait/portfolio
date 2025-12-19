@@ -12,7 +12,7 @@
       "schematics": {},
       "root": "",
       "sourceRoot": "src",
-      "prefix": "",
+      "prefix": "pf",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
