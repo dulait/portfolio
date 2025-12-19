@@ -1,25 +1,15 @@
-#!/bin/sh
-
-# Get the commit message file
 COMMIT_MSG_FILE=$1
 COMMIT_SOURCE=$2
 
-# Only run for regular commits (not merge, squash, etc.)
 if [ -z "$COMMIT_SOURCE" ] || [ "$COMMIT_SOURCE" = "message" ]; then
-  # Get the current branch name
   BRANCH_NAME=$(git symbolic-ref --short HEAD 2>/dev/null)
 
-  # Extract issue number from branch name pattern: <category>/pf-<issue-no>/<description>
-  # Example: feat/pf-4/some-description -> extracts "4"
   if echo "$BRANCH_NAME" | grep -qE '/pf-[0-9]+/'; then
     ISSUE_NO=$(echo "$BRANCH_NAME" | sed -E 's|.*/pf-([0-9]+)/.*|\1|')
 
-    # Read the current commit message
     COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
 
-    # Check if the issue number is already in the message
     if ! grep -q "(#$ISSUE_NO)" "$COMMIT_MSG_FILE"; then
-      # Remove any trailing whitespace and add the issue number
       COMMIT_MSG=$(echo "$COMMIT_MSG" | sed -e 's/[[:space:]]*$//')
       echo "$COMMIT_MSG (#$ISSUE_NO)" > "$COMMIT_MSG_FILE"
     fi
