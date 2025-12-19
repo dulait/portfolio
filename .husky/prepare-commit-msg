@@ -1,0 +1,17 @@
+COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2
+
+if [ -z "$COMMIT_SOURCE" ] || [ "$COMMIT_SOURCE" = "message" ]; then
+  BRANCH_NAME=$(git symbolic-ref --short HEAD 2>/dev/null)
+
+  if echo "$BRANCH_NAME" | grep -qE '/pf-[0-9]+/'; then
+    ISSUE_NO=$(echo "$BRANCH_NAME" | sed -E 's|.*/pf-([0-9]+)/.*|\1|')
+
+    COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+
+    if ! grep -q "(#$ISSUE_NO)" "$COMMIT_MSG_FILE"; then
+      COMMIT_MSG=$(echo "$COMMIT_MSG" | sed -e 's/[[:space:]]*$//')
+      echo "$COMMIT_MSG (#$ISSUE_NO)" > "$COMMIT_MSG_FILE"
+    fi
+  fi
+fi
