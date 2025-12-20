@@ -33,7 +33,12 @@ module.exports = defineConfig([
           style: "kebab-case",
         },
       ],
-      "prettier/prettier": "error",
+      "prettier/prettier": [
+        "error",
+        {
+          "endOfLine": "auto"
+        }
+      ]
     },
   },
   {
