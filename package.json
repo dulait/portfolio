@@ -8,7 +8,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:portfolio": "node dist/portfolio/server/server.mjs",
-    "prepare": "husky"
+    "prepare": "husky",
+    "format": "prettier --write \"src/**/*.{ts,html,scss,css,json}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,html,scss,css,json}\"",
+    "lint": "ng lint"
   },
   "prettier": {
     "printWidth": 100,
@@ -20,6 +23,14 @@
           "parser": "angular"
         }
       }
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,html}": [
+      "eslint --fix"
+    ],
+    "*.{ts,html,scss,css,json}": [
+      "prettier --write"
     ]
   },
   "private": true,
@@ -44,11 +55,18 @@
     "@tailwindcss/postcss": "^4.1.12",
     "@types/express": "^5.0.1",
     "@types/node": "^20.17.19",
+    "angular-eslint": "21.1.0",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
     "husky": "^9.1.7",
     "jsdom": "^27.1.0",
+    "lint-staged": "^16.2.7",
     "postcss": "^8.5.3",
+    "prettier": "3.7.4",
     "tailwindcss": "^4.1.12",
     "typescript": "~5.9.2",
+    "typescript-eslint": "8.47.0",
     "vitest": "^4.0.8"
   }
 }
