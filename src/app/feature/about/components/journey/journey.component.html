@@ -1,0 +1,49 @@
+<h3 class="text-2xl text-white mb-10 text-center">My Journey</h3>
+
+<div class="relative">
+  <div
+    class="absolute left-8 top-8 bottom-8 w-0.5 bg-gradient-to-b from-blue-500 to-blue-400 md:left-1/2 md:transform md:-translate-x-1/2"
+  ></div>
+
+  <div class="space-y-12">
+    @for (item of timelineItems; track item.period) {
+      <div
+        class="relative flex items-center"
+        [ngClass]="{
+          'md:justify-end': item.alignment === 'right',
+          'md:justify-start': item.alignment === 'left',
+        }"
+      >
+        <div
+          class="ml-16 md:ml-0 md:w-5/12 w-full max-w-xs min-h-[160px] bg-slate-800/70 p-6 rounded-lg border border-slate-700 hover:border-blue-500/50 transition-colors flex flex-col"
+          [ngClass]="{
+            'md:mr-8': item.alignment === 'right',
+            'md:ml-8': item.alignment === 'left',
+          }"
+        >
+          <div class="flex items-center gap-3 mb-2">
+            <div
+              [class]="'w-2 h-2 rounded-full ' + item.dotColor"
+              [ngClass]="{ 'animate-pulse': item.isPresent }"
+            ></div>
+            <span class="text-sm text-blue-400">{{ item.period }}</span>
+          </div>
+          <h4 class="text-xl text-white mb-1">
+            {{ item.title }}
+          </h4>
+          <p class="text-gray-400">
+            {{ item.company }}
+          </p>
+        </div>
+
+        <div
+          [class]="
+            'absolute left-6.5 w-4 h-4 rounded-full border-4 border-slate-900 md:left-1/2 md:transform md:-translate-x-1/2 ' +
+            item.dotColor
+          "
+          [ngClass]="{ 'animate-pulse': item.isPresent }"
+        ></div>
+      </div>
+    }
+  </div>
+</div>
