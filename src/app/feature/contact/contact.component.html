@@ -1,41 +1,54 @@
 <section id="contact" class="py-20 px-4 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900">
   <div class="max-w-4xl mx-auto">
-    <h2 class="mb-4 text-center text-white text-4xl font-bold">
-      Get In Touch
-    </h2>
+    <h2 class="mb-4 text-center text-white text-4xl font-bold">Get In Touch</h2>
 
     <p class="text-center text-gray-300 mb-12 text-lg">
-      I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+      I'm always open to discussing new projects, creative ideas, or opportunities to be part of
+      your vision.
     </p>
 
     <div class="grid md:grid-cols-3 gap-6">
       @for (method of contactMethods; track method.title) {
-      <div class="hover:shadow-lg hover:shadow-blue-500/20 transition-shadow bg-slate-800 border border-slate-700 rounded-lg overflow-hidden">
-        <div class="text-center p-6">
-          <div class="mx-auto mb-4 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center">
-            @if (method.isEmail) {
-            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="method.iconPath" />
-            </svg>
-            } @else {
-            <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
-              <path [attr.d]="method.iconPath" />
-            </svg>
-            }
+        <div
+          class="hover:shadow-lg hover:shadow-blue-500/20 transition-shadow bg-slate-800 border border-slate-700 rounded-lg overflow-hidden"
+        >
+          <div class="text-center p-6">
+            <div
+              class="mx-auto mb-4 w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center"
+            >
+              @if (method.isEmail) {
+                <svg
+                  class="w-6 h-6 text-blue-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    [attr.d]="method.iconPath"
+                  />
+                </svg>
+              } @else {
+                <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                  <path [attr.d]="method.iconPath" />
+                </svg>
+              }
+            </div>
+            <h3 class="text-white text-xl font-bold mb-4">{{ method.title }}</h3>
           </div>
-          <h3 class="text-white text-xl font-bold mb-4">{{ method.title }}</h3>
+          <div class="text-center pb-6 px-6">
+            <a
+              [href]="method.link"
+              [target]="method.isEmail ? undefined : '_blank'"
+              [rel]="method.isEmail ? undefined : 'noopener noreferrer'"
+              class="text-blue-400 hover:underline break-all"
+            >
+              {{ method.value }}
+            </a>
+          </div>
         </div>
-        <div class="text-center pb-6 px-6">
-          <a
-            [href]="method.link"
-            [target]="method.isEmail ? undefined : '_blank'"
-            [rel]="method.isEmail ? undefined : 'noopener noreferrer'"
-            class="text-blue-400 hover:underline break-all"
-          >
-            {{ method.value }}
-          </a>
-        </div>
-      </div>
       }
     </div>
   </div>
