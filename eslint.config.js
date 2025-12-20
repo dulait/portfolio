@@ -1,55 +1,57 @@
 // @ts-check
-const eslint = require("@eslint/js");
-const { defineConfig } = require("eslint/config");
-const tseslint = require("typescript-eslint");
-const angular = require("angular-eslint");
-const prettier = require("eslint-plugin-prettier/recommended");
+const eslint = require('@eslint/js');
+const tseslint = require('typescript-eslint');
+const angular = require('angular-eslint');
+const prettierPlugin = require('eslint-plugin-prettier');
+const prettierConfig = require('eslint-config-prettier');
 
-module.exports = defineConfig([
+module.exports = tseslint.config(
   {
-    files: ["**/*.ts"],
+    files: ['**/*.ts'],
     extends: [
       eslint.configs.recommended,
-      tseslint.configs.recommended,
-      tseslint.configs.stylistic,
-      angular.configs.tsRecommended,
-      prettier,
+      ...tseslint.configs.recommended,
+      ...tseslint.configs.stylistic,
+      ...angular.configs.tsRecommended,
+      prettierConfig,
     ],
+    plugins: {
+      prettier: prettierPlugin,
+    },
     processor: angular.processInlineTemplates,
     rules: {
-      "@angular-eslint/directive-selector": [
-        "error",
+      '@angular-eslint/directive-selector': [
+        'error',
         {
-          type: "attribute",
-          prefix: "pf",
-          style: "camelCase",
+          type: 'attribute',
+          prefix: 'pf',
+          style: 'camelCase',
         },
       ],
-      "@angular-eslint/component-selector": [
-        "error",
+      '@angular-eslint/component-selector': [
+        'error',
         {
-          type: "element",
-          prefix: "pf",
-          style: "kebab-case",
+          type: 'element',
+          prefix: 'pf',
+          style: 'kebab-case',
         },
       ],
-      "prettier/prettier": [
-        "error",
-        {
-          "endOfLine": "auto"
-        }
-      ]
+      'prettier/prettier': 'error',
+      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/no-unused-vars': 'off',
     },
   },
   {
-    files: ["**/*.html"],
+    files: ['**/*.html'],
     extends: [
-      angular.configs.templateRecommended,
-      angular.configs.templateAccessibility,
-      prettier,
+      ...angular.configs.templateRecommended,
+      ...angular.configs.templateAccessibility,
     ],
+    plugins: {
+      prettier: prettierPlugin,
+    },
     rules: {
-      "prettier/prettier": "error",
+      'prettier/prettier': 'error',
     },
   }
-]);
+);
