@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { JourneyComponent } from './components/journey';
 
 @Component({
   selector: 'pf-about',
-  imports: [],
+  imports: [JourneyComponent],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css',
 })
