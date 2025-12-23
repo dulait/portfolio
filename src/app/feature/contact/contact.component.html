@@ -1,5 +1,5 @@
 <section id="contact" class="py-20 px-4 bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900">
-  <div class="max-w-4xl mx-auto">
+  <div class="max-w-6xl mx-auto">
     <h2 class="mb-4 text-center text-white text-4xl font-bold">Get In Touch</h2>
 
     <p class="text-center text-gray-300 mb-12 text-lg">
@@ -10,7 +10,7 @@
     <div class="grid md:grid-cols-3 gap-6">
       @for (method of contactMethods; track method.title) {
         <div
-          class="hover:shadow-lg hover:shadow-blue-500/20 transition-shadow bg-slate-800 border border-slate-700 rounded-lg overflow-hidden"
+          class="hover:shadow-lg hover:border-blue-500/50 transition-colors bg-slate-800 border border-slate-700 rounded-lg overflow-hidden"
         >
           <div class="text-center p-6">
             <div
@@ -45,7 +45,7 @@
               [rel]="method.isEmail ? undefined : 'noopener noreferrer'"
               class="text-blue-400 hover:underline break-all"
             >
-              {{ method.value }}
+              {{ method.label }}
             </a>
           </div>
         </div>
