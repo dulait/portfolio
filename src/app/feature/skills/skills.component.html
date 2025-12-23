@@ -4,7 +4,9 @@
 
     <div class="grid md:grid-cols-3 gap-8">
       @for (category of skillCategories; track category.title) {
-        <div class="bg-slate-800/50 p-6 rounded-lg shadow-lg border border-slate-700">
+        <div
+          class="bg-slate-800/50 p-6 rounded-lg shadow-lg border border-slate-700 hover:border-blue-500/50 transition-colors"
+        >
           <h3 class="mb-4 text-blue-300 text-2xl font-semibold">
             {{ category.title }}
           </h3>
