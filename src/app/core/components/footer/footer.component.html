@@ -1,5 +1,29 @@
-<footer class="py-8 px-4 bg-slate-950 text-white border-t border-slate-800">
-  <div class="max-w-4xl mx-auto text-center">
-    <p class="text-gray-500">© {{ currentYear }} dulait. Built with Angular & Tailwind CSS.</p>
+<footer class="border-t border-border-subtle py-10 px-6 text-center bg-bg-primary">
+  <div class="flex flex-col items-center gap-4">
+    <div class="flex items-center justify-center gap-2 text-[13px] text-text-muted">
+      <a [href]="EMAIL_LINK.url" class="hover:text-accent transition-colors">
+        {{ EMAIL_LINK.label }}
+      </a>
+      <span class="select-none">&middot;</span>
+      <a
+        [href]="GITHUB_LINK.url"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-accent transition-colors"
+      >
+        GitHub
+      </a>
+      <span class="select-none">&middot;</span>
+      <a
+        [href]="LINKEDIN_LINK.url"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:text-accent transition-colors"
+      >
+        LinkedIn
+      </a>
+    </div>
+
+    <p class="text-[12px] text-text-muted opacity-60">&copy; {{ currentYear }} Dusan Draskovic</p>
   </div>
 </footer>
