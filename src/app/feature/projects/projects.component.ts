@@ -18,7 +18,7 @@ const projects: Project[] = [
     title: 'b1ngo',
     description:
       'A real-time multiplayer bingo web application themed for F1. Features lobby management, live game sessions, and a responsive interface for players to join and play together.',
-    technologies: ['Angular', 'TypeScript', 'C#', '.NET'],
+    technologies: ['C#', '.NET', 'Angular', 'TypeScript'],
     github: 'https://github.com/dulait/b1ngo',
     link: { label: 'Live App', url: 'https://b1ngo.live' },
   },
