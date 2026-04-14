@@ -1,59 +1,108 @@
 <header
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  class="fixed top-0 left-0 right-0 z-50"
   [ngClass]="{
-    'bg-gray-900/95 backdrop-blur-sm shadow-lg': isScrolled,
-    'bg-transparent': !isScrolled,
+    'bg-bg-primary backdrop-blur-sm shadow-[0_1px_0_0_#1f1f1f]': isScrolled,
+    'bg-bg-primary': !isScrolled && isMobileMenuOpen,
   }"
 >
-  <nav class="max-w-6xl mx-auto px-4 py-4">
-    <div class="flex items-center justify-between">
-      <div class="text-xl text-white">Dusan Draskovic</div>
+  <nav class="max-w-[900px] mx-auto px-6 h-[60px] flex items-center justify-between">
+    <button
+      (click)="scrollToTop()"
+      class="text-[15px] font-medium text-text-primary tracking-tight cursor-pointer"
+    >
+      Dusan Draskovic
+    </button>
 
-      <div class="hidden md:flex items-center gap-8">
-        @for (item of navItems; track item.href) {
-          <button
-            (click)="scrollToSection(item.href)"
-            class="text-gray-300 hover:text-white transition-colors cursor-pointer"
-          >
-            {{ item.label }}
-          </button>
-        }
-      </div>
-
-      <button class="md:hidden text-white" (click)="toggleMobileMenu()">
-        @if (isMobileMenuOpen) {
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        } @else {
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        }
-      </button>
+    <div class="hidden md:flex items-center gap-8">
+      @for (item of navItems; track item.href) {
+        <button
+          (click)="scrollToSection(item.href)"
+          class="text-[13px] text-text-secondary hover:text-text-primary transition-colors cursor-pointer tracking-wide"
+        >
+          {{ item.label }}
+        </button>
+      }
+      <a
+        href="/assets/cv.pdf"
+        download="Dusan_Draskovic_CV.pdf"
+        class="text-[12px] font-medium text-accent border border-accent px-4 py-1.5 rounded-md inline-flex items-center gap-1.5 hover:bg-accent-subtle transition-colors tracking-wider"
+      >
+        <svg
+          class="w-[13px] h-[13px]"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+        Download CV
+      </a>
     </div>
 
-    @if (isMobileMenuOpen) {
-      <div class="md:hidden mt-4 pb-4 flex flex-col gap-4">
-        @for (item of navItems; track item.href) {
-          <button
-            (click)="scrollToSection(item.href)"
-            class="text-gray-300 hover:text-white transition-colors text-left"
-          >
-            {{ item.label }}
-          </button>
-        }
-      </div>
-    }
+    <button class="md:hidden text-text-primary cursor-pointer" (click)="toggleMobileMenu()">
+      @if (isMobileMenuOpen) {
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      } @else {
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      }
+    </button>
   </nav>
+
+  <div
+    class="md:hidden overflow-hidden transition-all duration-300 ease-in-out"
+    [ngClass]="{
+      'max-h-[300px] opacity-100': isMobileMenuOpen,
+      'max-h-0 opacity-0': !isMobileMenuOpen,
+    }"
+  >
+    <div class="px-6 pb-5 pt-1 flex flex-col gap-4">
+      @for (item of navItems; track item.href) {
+        <button
+          (click)="scrollToSection(item.href)"
+          class="text-[13px] text-text-secondary hover:text-text-primary transition-colors text-left cursor-pointer"
+        >
+          {{ item.label }}
+        </button>
+      }
+      <a
+        href="/assets/cv.pdf"
+        download="Dusan_Draskovic_CV.pdf"
+        class="text-[12px] font-medium text-accent border border-accent px-4 py-1.5 rounded-md inline-flex items-center gap-1.5 w-fit"
+      >
+        <svg
+          class="w-[13px] h-[13px]"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" y1="15" x2="12" y2="3" />
+        </svg>
+        Download CV
+      </a>
+    </div>
+  </div>
 </header>
