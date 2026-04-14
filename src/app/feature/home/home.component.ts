@@ -1,44 +1,42 @@
+import { Component, OnInit, signal } from '@angular/core';
 import {
   GITHUB_SOCIAL_LINK,
   LINKEDIN_SOCIAL_LINK,
   EMAIL_SOCIAL_LINK,
 } from './../../shared/data/social-links';
-import { Component, inject, OnInit } from '@angular/core';
 import { Quote } from './model';
 import { quotes } from './data';
-import { ScrollToSectionService } from '../../shared/service';
+import { TypewriterDirective } from '../../shared/directive/typewriter.directive';
 
 @Component({
   selector: 'pf-home',
-  imports: [],
+  imports: [TypewriterDirective],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  private readonly _scrollToSectionService = inject(ScrollToSectionService);
-
-  // todo - maybe we can find a better way to handle social links later
   readonly GITHUB_SOCIAL_LINK = GITHUB_SOCIAL_LINK;
   readonly LINKEDIN_SOCIAL_LINK = LINKEDIN_SOCIAL_LINK;
   readonly EMAIL_SOCIAL_LINK = EMAIL_SOCIAL_LINK;
 
-  currentQuote: Quote = quotes[0];
+  currentQuote = signal<Quote>(quotes[0]);
+
+  private lastIndex = -1;
 
   ngOnInit(): void {
-    this.getRandomQuote();
+    this.pickNewQuote();
   }
 
-  getRandomQuote(): void {
-    const randomIndex = Math.floor(Math.random() * quotes.length);
-    this.currentQuote = quotes[randomIndex];
+  onQuoteDeleted(): void {
+    this.pickNewQuote();
   }
 
-  // todo - this is fine for now, but we should consider a better approach later
-  scrollToProjectsSection(): void {
-    this._scrollToSectionService.scrollToSection('#projects');
-  }
-
-  scrollToContactSection(): void {
-    this._scrollToSectionService.scrollToSection('#contact');
+  private pickNewQuote(): void {
+    let index: number;
+    do {
+      index = Math.floor(Math.random() * quotes.length);
+    } while (index === this.lastIndex && quotes.length > 1);
+    this.lastIndex = index;
+    this.currentQuote.set(quotes[index]);
   }
 }
