@@ -1,44 +1,48 @@
 import { Component } from '@angular/core';
 
+interface ProjectLink {
+  label: string;
+  url: string;
+}
+
 interface Project {
   title: string;
   description: string;
-  image: string;
   technologies: string[];
   github: string;
-  demo: string;
+  link?: ProjectLink;
 }
 
 const projects: Project[] = [
   {
     title: 'b1ngo',
     description:
-      'A real-time multiplayer bingo web application, themed for F1. Features lobby management, live game sessions, and a responsive interface for players to join and play together.',
-    image:
-      'https://images.unsplash.com/photo-1699138346782-8a8b211c3da2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+      'A real-time multiplayer bingo web application themed for F1. Features lobby management, live game sessions, and a responsive interface for players to join and play together.',
     technologies: ['Angular', 'TypeScript', 'C#', '.NET'],
     github: 'https://github.com/dulait/b1ngo',
-    demo: 'https://b1ngo.live',
+    link: { label: 'Live App', url: 'https://b1ngo.live' },
   },
   {
-    title: 'Project 2 - Coming Soon',
+    title: 'helloworld-crawler',
     description:
-      'This project is currently in development. Check out my GitHub profile to see my latest work and contributions.',
-    image:
-      'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-    technologies: ['Work In Progress'],
-    github: 'https://github.com/dulait',
-    demo: 'https://github.com/dulait',
+      'A web crawler that scrapes IT interview questions, ratings, and experiences from helloworld.rs. Exports to CSV, JSON, or Excel. Available as a standalone executable, CLI tool, or GUI application.',
+    technologies: ['Python'],
+    github: 'https://github.com/dulait/helloworld-crawler',
   },
   {
-    title: 'Project 3 - Coming Soon',
+    title: 'vstudio',
     description:
-      'This project is currently in development. Check out my GitHub profile to see my latest work and contributions.',
-    image:
-      'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
-    technologies: ['Work In Progress'],
-    github: 'https://github.com/dulait',
-    demo: 'https://github.com/dulait',
+      'A .NET global tool that opens Visual Studio solution files from the command line. Finds and opens solutions by directory or by direct path.',
+    technologies: ['C#', '.NET'],
+    github: 'https://github.com/dulait/vstudio',
+    link: { label: 'NuGet', url: 'https://www.nuget.org/packages/vstudio' },
+  },
+  {
+    title: 'check-mate',
+    description:
+      'A Java library for validating standardized numbers. Supports IBANs, ISBN-10, ISBN-13, email addresses, credit card numbers, and JMBG.',
+    technologies: ['Java'],
+    github: 'https://github.com/dulait/check-mate',
   },
 ];
 

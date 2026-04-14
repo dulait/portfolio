@@ -2,9 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 const navItems = [
-  { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -35,5 +33,10 @@ export class HeaderComponent {
       element.scrollIntoView({ behavior: 'smooth' });
       this.isMobileMenuOpen = false;
     }
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.isMobileMenuOpen = false;
   }
 }

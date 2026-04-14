@@ -1,12 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { FooterComponent, HeaderComponent } from './core/components';
-import {
-  AboutComponent,
-  ContactComponent,
-  HomeComponent,
-  ProjectsComponent,
-  SkillsComponent,
-} from './feature';
+import { AboutComponent, ContactComponent, HomeComponent, ProjectsComponent } from './feature';
 
 @Component({
   selector: 'pf-app-root',
@@ -15,13 +9,10 @@ import {
     FooterComponent,
     HomeComponent,
     AboutComponent,
-    SkillsComponent,
     ProjectsComponent,
     ContactComponent,
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App {
-  protected readonly title = signal('portfolio');
-}
+export class App {}
