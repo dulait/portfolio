@@ -1,19 +1,60 @@
-<section id="about" class="py-20 px-4 bg-slate-900">
-  <div class="max-w-4xl mx-auto">
-    <h2 class="mb-8 text-center text-white text-4xl font-bold">About Me</h2>
+<section id="about" class="py-20 px-6 bg-bg-primary">
+  <div class="max-w-[800px] mx-auto">
+    <h2
+      class="text-2xl md:text-3xl font-bold text-text-primary tracking-tight after:content-[''] after:block after:w-9 after:h-0.5 after:bg-accent after:mt-3 after:rounded-sm"
+    >
+      About
+    </h2>
 
-    <div class="space-y-4 text-gray-300 text-lg text-justify mb-16">
-      <p>
-        I'm a software engineer with 2+ years of professional experience. I work primarily with .NET
-        and Angular, but I've also built applications using a variety of different technologies.
-      </p>
+    <p class="mt-8 text-[15px] text-text-secondary leading-relaxed max-w-[620px]">
+      I'm a software engineer, working primarily with .NET and Angular. I focus on system design &
+      data flow, failure handling, and keeping things maintainable over time. I care about edge
+      cases and making sure the codebase still makes sense a year or two later.
+    </p>
 
-      <p>
-        I focus on writing maintainable code and building interfaces that make sense to use. Still
-        learning, still building.
-      </p>
+    <div class="mt-14">
+      <h3 class="text-[15px] font-semibold text-text-primary tracking-wide mb-5">Experience</h3>
+
+      <div class="flex flex-col gap-3">
+        @for (item of experience; track item.company) {
+          <div
+            class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-4 text-[14px] bg-bg-surface border border-border-subtle rounded-lg px-5 py-4 md:py-3"
+          >
+            <span class="text-text-primary font-medium md:min-w-[100px]">{{ item.company }}</span>
+            <span class="text-text-secondary md:flex-1">{{ item.role }}</span>
+            <span class="text-text-muted text-[12px] flex items-center gap-1.5 mt-1 md:mt-0">
+              @if (item.isCurrent) {
+                <span class="w-1.5 h-1.5 rounded-full bg-accent inline-block"></span>
+              }
+              {{ item.period }}
+            </span>
+          </div>
+        }
+      </div>
     </div>
 
-    <pf-journey />
+    <div class="mt-14">
+      <h3 class="text-[15px] font-semibold text-text-primary tracking-wide mb-5">Technologies</h3>
+
+      <div class="flex flex-col gap-3">
+        @for (category of technologies; track category.label) {
+          <div class="flex items-baseline gap-4 text-[14px]">
+            <span
+              class="text-[11px] font-medium text-text-muted uppercase tracking-widest min-w-[72px] shrink-0"
+            >
+              {{ category.label }}
+            </span>
+            <span class="flex flex-wrap items-baseline gap-x-2 text-text-secondary">
+              @for (tech of category.items; track tech; let last = $last) {
+                <span>{{ tech }}</span>
+                @if (!last) {
+                  <span class="text-border-hover select-none">&middot;</span>
+                }
+              }
+            </span>
+          </div>
+        }
+      </div>
+    </div>
   </div>
 </section>
